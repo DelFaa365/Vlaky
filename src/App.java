@@ -2,28 +2,22 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Scanner sken = new Scanner(System.in);
-        System.out.print("Kolik vlaků? : ");
-        int pocet = sken.nextInt();
-        System.out.println("jak jedou podle zastávek");
-        int array [] = new int[pocet];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = sken.nextInt();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Počet zastávek");
+        int pocetZastavek = sc.nextInt();
+        System.out.println("Zadej jednotlivé vlaky");
+        for (int t=0; t<pocetZastavek; t++) {
+          int[] vlaky = new int[pocetZastavek];
+          for (int i=0; i<pocetZastavek; i++) {
+            vlaky[i] = sc.nextInt();
+          }
+          int pocet = 0;    
+          int aktualni = 0;  
+          while (aktualni < pocetZastavek-1) {
+            aktualni += vlaky[aktualni];
+            pocet++;
+          }
+          System.out.println(pocet);
         }
-
-        int delka = 0;
-        int poz = 0;
-        int temp = 1;
-
-        while(delka < pocet){
-            delka += array[poz];
-            poz += delka;
-            temp++;
-        }
-
-        System.out.println(temp);
-        
-
-        
     }
 }
